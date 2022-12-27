@@ -1,6 +1,6 @@
-# ly_app
+# Chore_tracker
 
-A new Flutter project.
+An app for managing chores in a household. 
 
 ## Getting Started
 
