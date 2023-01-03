@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ly_app">
    <application
-        android:label="ly_app"
+        android:label="Chore Tracker"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
