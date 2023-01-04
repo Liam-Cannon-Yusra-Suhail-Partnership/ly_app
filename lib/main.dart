@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+//import 'package:auto_size_text/auto_size_text.dart';
 void main() {
   runApp(MyApp());
 }
@@ -59,6 +60,14 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  Widget startText(BuildContext context) {
+    return Text('How would you like to manage your chores');
+  }
+
+  Widget aboutButton(BuildContext context) {
+    return Text('About ');
+  }
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -93,21 +102,24 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
+            Container(child: startText(context)),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
+            ElevatedButton(
+                child: aboutButton(context),
+                onPressed: () => Navigator.of(context).pushNamed('/about')),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        foregroundColor: Colors.black87,
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: Icon(Icons.add),
+        child: Icon(Icons.add, size: 30),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
