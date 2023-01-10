@@ -26,7 +26,8 @@ class MyApp extends StatelessWidget {
         home: MyHomePage(title: 'Chore Tracker Home Page'),
         routes: {
           '/about': (context) => new AboutScreen(),
-          //TODO: add routes for "add chores" and "view chores " here
+          //todo: add routes for "add chores" and "view chores " here
+          '/addChores': (context) => new AddChoreScreen(),
         });
   }
 }
@@ -71,9 +72,12 @@ class _MyHomePageState extends State<MyHomePage> {
     return Text('About ');
   }
 
-  //TODO: Make view chores widget like above
+  //todo: Make view chores widget like above
 
-  //TODO: Make add chores widget like above
+  //todo: Make add chores widget like above
+  Widget addChoreButton(BuildContext context) {
+    return Text('Add Chores ');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -117,8 +121,11 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
                 child: aboutButton(context),
                 onPressed: () => Navigator.of(context).pushNamed('/about')),
-            //TODO: Add "Add chores" button
-            //TODO: Add "View chores" button
+            //todo: Add "Add chores" button
+            ElevatedButton(
+                child: addChoreButton(context),
+                onPressed: () => Navigator.of(context).pushNamed('/addChores')),
+            //todo: Add "View chores" button
           ],
         ),
       ),
@@ -145,4 +152,15 @@ class AboutScreen extends StatelessWidget {
   }
 }
 
-//TODO: Add classes for the "add chores" and "view chores" pages.
+//todo: Add classes for the "add chores" and "view chores" pages.
+class AddChoreScreen extends StatelessWidget {
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        // Here we take the value from the MyHomePage object that was created by
+        // the App.build method, and use it to set our appbar title.
+        title: Text('Add Chore Page'),
+      ),
+    );
+  }
+}
