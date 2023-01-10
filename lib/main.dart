@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
         ),
         home: MyHomePage(title: 'Chore Tracker Home Page'),
         routes: {
-          '/about': (context) => new AboutScreen(),
+          '/about': (context) => new AboutScreen(title: 'About us',),
           //todo: add routes for "add chores" and "view chores " here
           '/addChores': (context) => new AddChoreScreen(),
         });
@@ -69,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget aboutButton(BuildContext context) {
-    return Text('About ');
+    return Text('About Us');
   }
 
   //todo: Make view chores widget like above
@@ -139,19 +139,126 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+Widget member1(BuildContext context) {
+    return Text('Liam Cannon ');
+}
+Widget member2(BuildContext context) {
+    return Text('Yusra Suhail ');
+}
+Widget member3(BuildContext context) {
+    return Text('Lakshinee Rungadoo ');
+}
+class AboutScreen extends StatefulWidget {
+  AboutScreen({Key? key, required this.title}) : super(key: key);
 
-class AboutScreen extends StatelessWidget {
+  // This widget is the about page of your application. 
+  final String title;
+  @override
+  _AboutScreenState createState() => _AboutScreenState();
+}
+
+class _AboutScreenState extends State<AboutScreen> {
+  @override
   Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(title: Text(widget.title)),
+        body: Center(child: TeamMembers(),)
+   );
+  }
+}
+class TeamMembers extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Text(
+          'Add some generic stuff in here',
+          textScaleFactor: 2.0,
+          style: TextStyle(
+            color: Color.fromARGB(255, 170, 33, 243),
+            fontSize: 10.0
+           ),
+        ),
+        ElevatedButton(
+                child: member1(context),
+                onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => IntroMember1()),
+                );
+              },
+            ),
+        ElevatedButton(
+                child: member2(context),
+                onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => IntroMember2()),
+                );
+              },
+            ),
+        ElevatedButton(
+                child: member3(context),
+                onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => IntroMember3()),
+                );
+              },
+            ),
+      ],
+    );
+  }
+}
+class IntroMember1 extends StatelessWidget {
+    Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text('About Page'),
+        title: Text('Liam Cannon'),
       ),
     );
   }
 }
-
+class IntroMember2 extends StatelessWidget {
+    Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        // Here we take the value from the MyHomePage object that was created by
+        // the App.build method, and use it to set our appbar title.
+        title: Text('Yusra Suhail'),
+      ),
+      body:Center(
+        child:Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              'I am a senior at University of Rhode Island, completing my bachelors in Computer Science.',
+              textScaleFactor: 2.0,
+              style: TextStyle(
+                color: Color.fromARGB(255, 170, 33, 243),
+                fontSize: 10.0
+              ),
+            ),
+          ]
+        ),
+      ),
+    );
+  }
+}
+class IntroMember3 extends StatelessWidget {
+    Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        // Here we take the value from the MyHomePage object that was created by
+        // the App.build method, and use it to set our appbar title.
+        title: Text('Lakshinee Rungadoo'),
+      ),
+    );
+  }
+}
 //todo: Add classes for the "add chores" and "view chores" pages.
 class AddChoreScreen extends StatelessWidget {
   Widget build(BuildContext context) {
