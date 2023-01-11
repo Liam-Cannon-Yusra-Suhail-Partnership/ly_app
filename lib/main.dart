@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
           '/about': (context) => new AboutScreen(),
           //todo: add routes for "add chores" and "view chores " here
           '/addChores': (context) => new AddChoreScreen(),
+          '/viewChores': (context) => new ViewChoreScreen(),
         });
   }
 }
@@ -73,6 +74,9 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   //todo: Make view chores widget like above
+  Widget viewChoreButton(BuildContext context) {
+    return Text('View Chores');
+  }
 
   //todo: Make add chores widget like above
   Widget addChoreButton(BuildContext context) {
@@ -126,6 +130,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: addChoreButton(context),
                 onPressed: () => Navigator.of(context).pushNamed('/addChores')),
             //todo: Add "View chores" button
+            ElevatedButton(
+                child: viewChoreButton(context),
+                onPressed: () =>
+                    Navigator.of(context).pushNamed('/viewChores')),
           ],
         ),
       ),
@@ -160,6 +168,16 @@ class AddChoreScreen extends StatelessWidget {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text('Add Chore Page'),
+      ),
+    );
+  }
+}
+
+class ViewChoreScreen extends StatelessWidget {
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('View Chore Page'),
       ),
     );
   }
