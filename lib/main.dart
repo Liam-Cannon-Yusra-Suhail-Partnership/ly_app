@@ -238,8 +238,8 @@ class IntroMember2 extends StatelessWidget {
               'I am a senior at University of Rhode Island, completing my bachelors in Computer Science.',
               textScaleFactor: 2.0,
               style: TextStyle(
-                color: Color.fromARGB(255, 170, 33, 243),
-                fontSize: 10.0
+                color: Color.fromARGB(255, 9, 8, 9),
+                fontSize: 7.0
               ),
             ),
           ]
