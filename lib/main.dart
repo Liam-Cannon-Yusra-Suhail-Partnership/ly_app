@@ -26,7 +26,6 @@ class MyApp extends StatelessWidget {
         home: MyHomePage(title: 'Chore Tracker Home Page'),
         routes: {
           '/about': (context) => new AboutScreen(title: 'About us',),
-          //todo: add routes for "add chores" and "view chores " here
           '/addChores': (context) => new AddChoreScreen(),
           '/viewChores': (context) => new ViewChoreScreen(),
         });
@@ -64,23 +63,33 @@ class _MyHomePageState extends State<MyHomePage> {
       _counter++;
     });
   }
+  Widget welcomeText(BuildContext context) {
+    return Text('Welcome to Chore Tracker, an app built by URI undergraduates to help you manage your daily chores.\nHit the about us button to learn more about us :)',
+      style: TextStyle(fontSize: 20),
+    );
 
+  }
   Widget startText(BuildContext context) {
-    return Text('How would you like to manage your chores');
+    return Text('How would you like to manage your chores?',
+    style: TextStyle(fontSize: 20),
+    );
   }
 
   Widget aboutButton(BuildContext context) {
-    return Text('About Us');
+    return Text('About Us',
+    style: TextStyle(fontSize: 20),
+    );
   }
 
-  //todo: Make view chores widget like above
   Widget viewChoreButton(BuildContext context) {
-    return Text('View Chores');
+    return Text('View Chores',
+    style: TextStyle(fontSize: 20),
+    );
   }
 
-  //todo: Make add chores widget like above
   Widget addChoreButton(BuildContext context) {
-    return Text('Add Chores ');
+    return Text('Add Chores ',
+    style: TextStyle(fontSize: 20));
   }
 
   @override
@@ -115,21 +124,33 @@ class _MyHomePageState extends State<MyHomePage> {
           // center the children vertically; the main axis here is the vertical
           // axis because Columns are vertical (the cross axis would be
           // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            Container(child: startText(context)),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
+            SizedBox(
+                height: 25,
+              ),
+            Container(child: welcomeText(context)),
             ElevatedButton(
                 child: aboutButton(context),
                 onPressed: () => Navigator.of(context).pushNamed('/about')),
-            //todo: Add "Add chores" button
+            //Use of SizedBox to add spacing in between buttons
+            SizedBox(
+                height: 15,
+              ),
+            Container(child: startText(context)),
+            // Text(
+            //   '$_counter',
+            //   style: Theme.of(context).textTheme.headline4,
+            // ),
+            SizedBox(
+                height: 15,
+              ),
             ElevatedButton(
                 child: addChoreButton(context),
                 onPressed: () => Navigator.of(context).pushNamed('/addChores')),
-            //todo: Add "View chores" button
+            SizedBox(
+                height: 15,
+              ),
             ElevatedButton(
                 child: viewChoreButton(context),
                 onPressed: () =>
