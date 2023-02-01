@@ -42,7 +42,8 @@ class MyHomePage extends StatefulWidget {
   // This class is the configuration for the state. It holds the values (in this
   // case the title) provided by the parent (in this case the App widget) and
   // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
+  // always marked "final". Final means that the value assigned to the variable
+  // is hardcoded and can't change.
 
   final String title;
 
@@ -51,6 +52,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  // ignore: unused_field
   int _counter = 0;
 
   void _incrementCounter() {
@@ -64,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
   Widget welcomeText(BuildContext context) {
-    return Text('Welcome to Chore Tracker, an app built by URI undergraduates to help you manage your daily chores.\nHit the about us button to learn more about us :)',
+    return Text('Welcome to Chore Tracker, an app built by URI undergraduates to help you manage your daily chores.\n\nHit the about us button to learn more about us :)',
       style: TextStyle(fontSize: 20),
     );
 
@@ -91,7 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Text('Add Chores ',
     style: TextStyle(fontSize: 20));
   }
-
+  final viewButton = new Container();
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -127,7 +129,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             SizedBox(
-                height: 25,
+                height: 40,
               ),
             Container(child: welcomeText(context)),
             ElevatedButton(
@@ -145,16 +147,21 @@ class _MyHomePageState extends State<MyHomePage> {
             SizedBox(
                 height: 15,
               ),
-            ElevatedButton(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                 ElevatedButton(
                 child: addChoreButton(context),
                 onPressed: () => Navigator.of(context).pushNamed('/addChores')),
             SizedBox(
-                height: 15,
+                width: 15,
               ),
             ElevatedButton(
                 child: viewChoreButton(context),
                 onPressed: () =>
                     Navigator.of(context).pushNamed('/viewChores')),
+              ],
+            )       
           ],
         ),
       ),
