@@ -66,8 +66,15 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
   Widget welcomeText(BuildContext context) {
-    return Text('Welcome to Chore Tracker, an app built by URI undergraduates to help you manage your daily chores.\n\nHit the about us button to learn more about us :)',
-      style: TextStyle(fontSize: 20),
+    return Text('Greetings Family to Chore Tracker!!\n\n',
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        fontSize: 40,
+        foreground: Paint()
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 4
+          ..color = Colors.blue[700]!,
+      )
     );
 
   }
