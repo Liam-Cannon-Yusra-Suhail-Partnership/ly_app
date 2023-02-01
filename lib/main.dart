@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
           // or simply save your changes to "hot reload" in a Flutter IDE).
           // Notice that the counter didn't reset back to zero; the application
           // is not restarted.
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.amber,
         ),
         home: MyHomePage(title: 'Chore Tracker Home Page'),
         routes: {
@@ -66,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
   Widget welcomeText(BuildContext context) {
-    return Text('Greetings Family to Chore Tracker!!\n\n',
+    return Text('Greetings to Chore Tracker!!',
       textAlign: TextAlign.center,
       style: TextStyle(
         fontSize: 40,
@@ -78,27 +78,55 @@ class _MyHomePageState extends State<MyHomePage> {
     );
 
   }
+  // Widget aboutText(BuildContext context) {
+  //   return Text('Hey do you want to know about us? Hit the about button :)',
+  //   textAlign: TextAlign.center,
+  //   style: TextStyle(
+  //             fontSize: 22,
+  //             color: Colors.grey[800],
+  //             fontWeight: FontWeight.w900,
+  //             fontStyle: FontStyle.italic,
+  //           ),
+  //   );
+  // }
   Widget startText(BuildContext context) {
     return Text('How would you like to manage your chores?',
-    style: TextStyle(fontSize: 20),
+    textAlign: TextAlign.center,
+    style: TextStyle(
+              fontSize: 22,
+              color: Colors.grey[800],
+              fontWeight: FontWeight.w900,
+              fontStyle: FontStyle.italic,
+            ),
     );
   }
 
   Widget aboutButton(BuildContext context) {
-    return Text('About Us',
-    style: TextStyle(fontSize: 20),
+    return Text('Who are we?',
+    style: TextStyle(fontSize: 22,
+              color: Colors.blue[700]!,
+              fontWeight: FontWeight.w900,),
     );
   }
 
   Widget viewChoreButton(BuildContext context) {
     return Text('View Chores',
-    style: TextStyle(fontSize: 20),
+    style: TextStyle(
+              fontSize: 20,
+              color: Colors.blue[700]!,
+              fontWeight: FontWeight.w900,
+          ),
     );
   }
 
   Widget addChoreButton(BuildContext context) {
     return Text('Add Chores ',
-    style: TextStyle(fontSize: 20));
+    style: TextStyle(
+              fontSize: 20,
+              color: Colors.blue[700]!,
+              fontWeight: FontWeight.w900,
+          ),
+    );
   }
   final viewButton = new Container();
   @override
@@ -139,12 +167,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 40,
               ),
             Container(child: welcomeText(context)),
-            ElevatedButton(
-                child: aboutButton(context),
-                onPressed: () => Navigator.of(context).pushNamed('/about')),
             //Use of SizedBox to add spacing in between buttons
             SizedBox(
-                height: 15,
+                height: 40,
               ),
             Container(child: startText(context)),
             // Text(
@@ -168,7 +193,17 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () =>
                     Navigator.of(context).pushNamed('/viewChores')),
               ],
-            )       
+            ),
+            SizedBox(
+                height: 100,
+              ),
+            // Container(child: aboutText(context)),
+            // SizedBox(
+            //     height: 40,
+            //   ),
+            ElevatedButton(
+                child: aboutButton(context),
+                onPressed: () => Navigator.of(context).pushNamed('/about')),      
           ],
         ),
       ),
