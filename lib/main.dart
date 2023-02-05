@@ -66,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
   Widget welcomeText(BuildContext context) {
-    return Text('Greetings to Chore Tracker!!',
+    return Text('Greetings to Chore Tracker!',
       textAlign: TextAlign.center,
       style: TextStyle(
         fontSize: 40,
@@ -78,17 +78,6 @@ class _MyHomePageState extends State<MyHomePage> {
     );
 
   }
-  // Widget aboutText(BuildContext context) {
-  //   return Text('Hey do you want to know about us? Hit the about button :)',
-  //   textAlign: TextAlign.center,
-  //   style: TextStyle(
-  //             fontSize: 22,
-  //             color: Colors.grey[800],
-  //             fontWeight: FontWeight.w900,
-  //             fontStyle: FontStyle.italic,
-  //           ),
-  //   );
-  // }
   Widget startText(BuildContext context) {
     return Text('How would you like to manage your chores?',
     textAlign: TextAlign.center,
@@ -197,10 +186,6 @@ class _MyHomePageState extends State<MyHomePage> {
             SizedBox(
                 height: 100,
               ),
-            // Container(child: aboutText(context)),
-            // SizedBox(
-            //     height: 40,
-            //   ),
             ElevatedButton(
                 child: aboutButton(context),
                 onPressed: () => Navigator.of(context).pushNamed('/about')),      
@@ -218,13 +203,25 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 Widget member1(BuildContext context) {
-    return Text('Liam Cannon ');
+    return Text('Liam Cannon ',
+              style: TextStyle(fontSize: 22,
+              color: Colors.blue[700]!,
+              fontWeight: FontWeight.w900,),
+    );
 }
 Widget member2(BuildContext context) {
-    return Text('Yusra Suhail ');
+    return Text('Yusra Suhail ',
+    style: TextStyle(fontSize: 22,
+              color: Colors.blue[700]!,
+              fontWeight: FontWeight.w900,),
+    );
 }
 Widget member3(BuildContext context) {
-    return Text('Lakshinee Rungadoo ');
+    return Text('Lakshinee Rungadoo ',
+    style: TextStyle(fontSize: 22,
+              color: Colors.blue[700]!,
+              fontWeight: FontWeight.w900,),
+    );
 }
 class AboutScreen extends StatefulWidget {
   AboutScreen({Key? key, required this.title}) : super(key: key);
@@ -251,12 +248,15 @@ class TeamMembers extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Text(
-          'Add some generic stuff in here',
-          textScaleFactor: 2.0,
+          'This app is built by three undergraduate students from URI, who are passionate about software development.',
           style: TextStyle(
-            color: Color.fromARGB(255, 170, 33, 243),
-            fontSize: 10.0
+            fontSize: 22,
+              color: Colors.grey[800],
+              fontWeight: FontWeight.w900,
            ),
+        ),
+        SizedBox(
+          height: 15,
         ),
         ElevatedButton(
                 child: member1(context),
@@ -267,6 +267,9 @@ class TeamMembers extends StatelessWidget {
                 );
               },
             ),
+        SizedBox(
+          height: 15,
+        ),
         ElevatedButton(
                 child: member2(context),
                 onPressed: () {
@@ -276,6 +279,9 @@ class TeamMembers extends StatelessWidget {
                 );
               },
             ),
+        SizedBox(
+          height: 15,
+        ),
         ElevatedButton(
                 child: member3(context),
                 onPressed: () {
@@ -316,8 +322,9 @@ class IntroMember2 extends StatelessWidget {
               'I am a senior at University of Rhode Island, completing my bachelors in Computer Science.',
               textScaleFactor: 2.0,
               style: TextStyle(
-                color: Color.fromARGB(255, 9, 8, 9),
-                fontSize: 7.0
+                fontSize: 20,
+                color: Colors.blue[700]!,
+                fontWeight: FontWeight.w900,
               ),
             ),
           ]
