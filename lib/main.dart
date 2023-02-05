@@ -252,7 +252,7 @@ class TeamMembers extends StatelessWidget {
           style: TextStyle(
             fontSize: 22,
               color: Colors.grey[800],
-              fontWeight: FontWeight.w900,
+              fontWeight: FontWeight.w700,
            ),
         ),
         SizedBox(
@@ -316,15 +316,17 @@ class IntroMember2 extends StatelessWidget {
       ),
       body:Center(
         child:Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
+            SizedBox(
+              height: 40,
+            ),
             Text(
               'I am a senior at University of Rhode Island, completing my bachelors in Computer Science.',
-              textScaleFactor: 2.0,
               style: TextStyle(
-                fontSize: 20,
-                color: Colors.blue[700]!,
-                fontWeight: FontWeight.w900,
+                fontSize: 22,
+              color: Colors.grey[800],
+              fontWeight: FontWeight.w700,
               ),
             ),
           ]
