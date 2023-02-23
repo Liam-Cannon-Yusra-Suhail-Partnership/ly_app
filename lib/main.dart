@@ -21,12 +21,11 @@ class MyApp extends StatelessWidget {
           // or simply save your changes to "hot reload" in a Flutter IDE).
           // Notice that the counter didn't reset back to zero; the application
           // is not restarted.
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.amber,
         ),
         home: MyHomePage(title: 'Chore Tracker Home Page'),
         routes: {
           '/about': (context) => new AboutScreen(title: 'About us',),
-          //todo: add routes for "add chores" and "view chores " here
           '/addChores': (context) => new AddChoreScreen(),
           '/viewChores': (context) => new ViewChoreScreen(),
         });
@@ -43,7 +42,8 @@ class MyHomePage extends StatefulWidget {
   // This class is the configuration for the state. It holds the values (in this
   // case the title) provided by the parent (in this case the App widget) and
   // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
+  // always marked "final". Final means that the value assigned to the variable
+  // is hardcoded and can't change.
 
   final String title;
 
@@ -52,6 +52,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  // ignore: unused_field
   int _counter = 0;
 
   void _incrementCounter() {
@@ -64,25 +65,59 @@ class _MyHomePageState extends State<MyHomePage> {
       _counter++;
     });
   }
+  Widget welcomeText(BuildContext context) {
+    return Text('Greetings to Chore Tracker!',
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        fontSize: 40,
+        foreground: Paint()
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 4
+          ..color = Colors.blue[700]!,
+      )
+    );
 
+  }
   Widget startText(BuildContext context) {
-    return Text('How would you like to manage your chores');
+    return Text('How would you like to manage your chores?',
+    textAlign: TextAlign.center,
+    style: TextStyle(
+              fontSize: 22,
+              color: Colors.grey[800],
+              fontWeight: FontWeight.w900,
+              fontStyle: FontStyle.italic,
+            ),
+    );
   }
 
   Widget aboutButton(BuildContext context) {
-    return Text('About Us');
+    return Text('Who are we?',
+    style: TextStyle(fontSize: 22,
+              color: Colors.blue[700]!,
+              fontWeight: FontWeight.w900,),
+    );
   }
 
-  //todo: Make view chores widget like above
   Widget viewChoreButton(BuildContext context) {
-    return Text('View Chores');
+    return Text('View Chores',
+    style: TextStyle(
+              fontSize: 20,
+              color: Colors.blue[700]!,
+              fontWeight: FontWeight.w900,
+          ),
+    );
   }
 
-  //todo: Make add chores widget like above
   Widget addChoreButton(BuildContext context) {
-    return Text('Add Chores ');
+    return Text('Add Chores ',
+    style: TextStyle(
+              fontSize: 20,
+              color: Colors.blue[700]!,
+              fontWeight: FontWeight.w900,
+          ),
+    );
   }
-
+  final viewButton = new Container();
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -115,25 +150,45 @@ class _MyHomePageState extends State<MyHomePage> {
           // center the children vertically; the main axis here is the vertical
           // axis because Columns are vertical (the cross axis would be
           // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
+            SizedBox(
+                height: 40,
+              ),
+            Container(child: welcomeText(context)),
+            //Use of SizedBox to add spacing in between buttons
+            SizedBox(
+                height: 40,
+              ),
             Container(child: startText(context)),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-            ElevatedButton(
-                child: aboutButton(context),
-                onPressed: () => Navigator.of(context).pushNamed('/about')),
-            //todo: Add "Add chores" button
-            ElevatedButton(
+            // Text(
+            //   '$_counter',
+            //   style: Theme.of(context).textTheme.headline4,
+            // ),
+            SizedBox(
+                height: 15,
+              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                 ElevatedButton(
                 child: addChoreButton(context),
                 onPressed: () => Navigator.of(context).pushNamed('/addChores')),
-            //todo: Add "View chores" button
+            SizedBox(
+                width: 15,
+              ),
             ElevatedButton(
                 child: viewChoreButton(context),
                 onPressed: () =>
                     Navigator.of(context).pushNamed('/viewChores')),
+              ],
+            ),
+            SizedBox(
+                height: 100,
+              ),
+            ElevatedButton(
+                child: aboutButton(context),
+                onPressed: () => Navigator.of(context).pushNamed('/about')),      
           ],
         ),
       ),
@@ -148,13 +203,25 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 Widget member1(BuildContext context) {
-    return Text('Liam Cannon ');
+    return Text('Liam Cannon ',
+              style: TextStyle(fontSize: 22,
+              color: Colors.blue[700]!,
+              fontWeight: FontWeight.w900,),
+    );
 }
 Widget member2(BuildContext context) {
-    return Text('Yusra Suhail ');
+    return Text('Yusra Suhail ',
+    style: TextStyle(fontSize: 22,
+              color: Colors.blue[700]!,
+              fontWeight: FontWeight.w900,),
+    );
 }
 Widget member3(BuildContext context) {
-    return Text('Lakshinee Rungadoo ');
+    return Text('Lakshinee Rungadoo ',
+    style: TextStyle(fontSize: 22,
+              color: Colors.blue[700]!,
+              fontWeight: FontWeight.w900,),
+    );
 }
 class AboutScreen extends StatefulWidget {
   AboutScreen({Key? key, required this.title}) : super(key: key);
@@ -181,12 +248,15 @@ class TeamMembers extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Text(
-          'Add some generic stuff in here',
-          textScaleFactor: 2.0,
+          'This app is built by three undergraduate students from URI, who are passionate about software development.',
           style: TextStyle(
-            color: Color.fromARGB(255, 170, 33, 243),
-            fontSize: 10.0
+            fontSize: 22,
+              color: Colors.grey[800],
+              fontWeight: FontWeight.w700,
            ),
+        ),
+        SizedBox(
+          height: 15,
         ),
         ElevatedButton(
                 child: member1(context),
@@ -197,6 +267,9 @@ class TeamMembers extends StatelessWidget {
                 );
               },
             ),
+        SizedBox(
+          height: 15,
+        ),
         ElevatedButton(
                 child: member2(context),
                 onPressed: () {
@@ -206,6 +279,9 @@ class TeamMembers extends StatelessWidget {
                 );
               },
             ),
+        SizedBox(
+          height: 15,
+        ),
         ElevatedButton(
                 child: member3(context),
                 onPressed: () {
@@ -240,14 +316,17 @@ class IntroMember2 extends StatelessWidget {
       ),
       body:Center(
         child:Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
+            SizedBox(
+              height: 40,
+            ),
             Text(
               'I am a senior at University of Rhode Island, completing my bachelors in Computer Science.',
-              textScaleFactor: 2.0,
               style: TextStyle(
-                color: Color.fromARGB(255, 9, 8, 9),
-                fontSize: 7.0
+                fontSize: 22,
+              color: Colors.grey[800],
+              fontWeight: FontWeight.w700,
               ),
             ),
           ]
